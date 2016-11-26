@@ -1,0 +1,42 @@
+﻿<!-- 	Daniel Makiyama Mello 7126517
+		Igor Baliza 8488826
+		Jean Amaro 8532401-->
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="checklist">
+<head>
+  <title>Checklist</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/angular.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery-2.2.2.min.js"></script>
+  <script src="js/script.js"></script>
+</head>
+<body >
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="container-fluid text-center">    
+				<div class="col-sm-5 text-left list-group" ng-controller="ListController as checklist"> 
+					<form ng-controller="ChecklistController as cl" ng-submit="cl.addTask(checklist.tasks)" name="taskForm">
+						<h4>Insert new tasks!</h4>
+						<fieldset class="form-group">
+							<textarea ng-model="cl.task.text" class="form-control" placeholder="" title="Task"></textarea>
+						</fieldset>
+						<fieldset class="form-group">
+							<input type="submit" class="btn btn-primary pull-right" value="Post task" />
+						</fieldset>
+					</form>
+					<ul class="list-group">
+						<li class ="list-group-item" ng-repeat="task in checklist.tasks">
+							<div class="checkbox" ng-click="checklist.removeTask($index)">
+								<label><input type="checkbox" value="">{{task.text}}</label>
+							</div>
+						</li> 
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
